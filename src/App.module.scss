@@ -1,0 +1,12 @@
+@forward './components/Main/Main.module.scss';
+
+.App {
+  max-width: 450px;
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 auto;
+  margin: 0 auto;
+  text-align: center;
+}

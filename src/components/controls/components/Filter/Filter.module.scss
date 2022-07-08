@@ -1,0 +1,22 @@
+.filter {
+  width: 100%;
+  max-width: 150px;
+  height: 40px;
+  outline: none;
+  border-radius: 5px;
+  cursor: pointer;
+
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  -ms-appearance: none;
+  appearance: none;
+  background: url('../../../../assets/icons/sort-down.png') #fff no-repeat 95%;
+  background-size: 20%;
+  padding: 0 10px;
+}
+
+@media (max-width: 420px) {
+  .filter {
+    height: 32px;
+  }
+}
