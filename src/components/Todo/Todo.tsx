@@ -2,13 +2,16 @@ import Card from '@mui/material/Card';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Delete';
 import Checkbox from '@mui/material/Checkbox';
-import style from './Todo.module.scss';
 import { TodoInterface } from '../../data/todo.interface';
-import React from 'react';
+import React, { useState } from 'react';
 import { store } from '../../store/todoStore';
 import { runInAction } from 'mobx';
+import { TodoDescription } from './components/Description/TodoDescription';
+import { UpdateInput } from './components/UpdateInput/UpdateInput';
 
 export const Todo: React.FC<TodoInterface> = (props) => {
+  const [update, setUpdate] = useState(false);
+
   const label = { inputProps: { 'aria-label': 'Checkbox demo' } };
 
   const setCompleted = () => {
@@ -21,6 +24,10 @@ export const Todo: React.FC<TodoInterface> = (props) => {
 
   const deleteTodo = () => {
     store.removeTodo(props.id);
+  };
+
+  const toggleUpdate = () => {
+    setUpdate(!update);
   };
 
   return (
@@ -41,9 +48,15 @@ export const Todo: React.FC<TodoInterface> = (props) => {
         onChange={() => setCompleted()}
       />
 
-      <p className={!props.completed ? style.title : `${style.title} ${style.complete}`}>
-        {props.description}
-      </p>
+      {update ? (
+        <UpdateInput description={props.description} id={props.id} toggle={toggleUpdate} />
+      ) : (
+        <TodoDescription
+          completed={props.completed}
+          description={props.description}
+          toggle={toggleUpdate}
+        />
+      )}
 
       <IconButton sx={{ padding: '4px' }} aria-label="delete" size="large" onClick={deleteTodo}>
         <DeleteIcon />

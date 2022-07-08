@@ -22,6 +22,11 @@ function todoStore() {
         this.initialState = this.todos;
       },
 
+      updateTdo(id: string, description: string) {
+        this.todos.forEach((todo) => (todo.id === id ? (todo.description = description) : todo));
+        this.initialState = this.todos;
+      },
+
       filterTodo(filter: string) {
         this.todos = this.initialState;
         this.todos = applyFilters(filter, this.todos);
@@ -31,6 +36,7 @@ function todoStore() {
       todos: observable,
       addTodo: action.bound,
       removeTodo: action.bound,
+      updateTdo: action.bound,
       filterTodo: action.bound,
     }
   );

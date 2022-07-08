@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+}
+
+.btn {
+  background-color: transparent;
+  border: none;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+  .close {
+    color: red;
+}
+
+.ok {
+  color: green;
+}
